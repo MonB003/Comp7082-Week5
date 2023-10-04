@@ -10,18 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.0
       - name: Setup Java JDK
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt-hotspot'
           java-version: '17'
-
-#        uses: actions/checkout@v4.1.0
-#      - name: Setup Java JDK
-#        uses: actions/setup-java@v1
-#        with:
-#          java-version: 1.8
       - name: Make gradlew executable and change permissions
         run: chmod +x ./gradlew
       - name: Build with Gradle
