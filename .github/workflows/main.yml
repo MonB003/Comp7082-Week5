@@ -20,13 +20,13 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      # Only run lint on the main branch
+      # Only run lint if the branch is not main branch
       - name: Run Lint
         run: |
-            if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+            if [ "$GITHUB_REF" != "refs/heads/main" ]; then
               ./gradlew lint
             else
-              echo "Skipped lint because the branch is not main."
+              echo "Skipped lint because the branch is main."
             fi
       - name: Upload APK
         uses: actions/upload-artifact@v3.1.3
